@@ -1,0 +1,5 @@
+declare number myNumber
+add myNumber 5
+out myNumber
+add myNumber 2
+out myNumber
