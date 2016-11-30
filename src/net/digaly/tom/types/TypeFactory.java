@@ -9,6 +9,8 @@ public class TypeFactory
         switch(typeName) {
             case "number":
                 return new NumberType(0);
+            case "text":
+                return new TextType("");
         }
 
         return new UndefinedType();

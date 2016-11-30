@@ -21,6 +21,10 @@ public class InstructionFactory
                 return new OutInstruction(instructionParts[1]);
             case "add":
                 return new AddInstruction(instructionParts[1], instructionParts[2]);
+            case "mul":
+                return new MultiplyInstruction(instructionParts[1], instructionParts[2]);
+            case "set":
+                return new SetInstruction(instructionParts[1], instructionParts[2]);
         }
 
         return new NoInstruction();

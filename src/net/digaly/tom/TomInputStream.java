@@ -7,6 +7,8 @@ import net.digaly.tom.instructions.NoInstruction;
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Tom Dobbelaere on 21/11/2016.
@@ -31,8 +33,7 @@ public class TomInputStream extends FilterInputStream
         this.instructionFactory = new InstructionFactory();
     }
 
-    public Instruction nextInstruction() throws IOException
-    {
+    public Instruction nextInstruction() throws IOException {
         String out = "";
 
         int currentCharNumber = this.read();
@@ -52,6 +53,27 @@ public class TomInputStream extends FilterInputStream
 
         out = out.replaceAll("\\s{2,}", " ").trim();
 
+        /*
+        List<String> instructionParts = new ArrayList<>();
+        int readPos = 0;
+        String buildingString = "";
+
+        while (readPos != out.length()) {
+            String currentCharacter = out.substring(readPos, 1);
+
+            if (currentCharacter.equals(" ")) {
+                instructionParts.add(buildingString);
+                buildingString = "";
+                readPos ++;
+                continue;
+            }
+
+            buildingString += currentCharacter;
+
+            readPos ++;
+        }
+
+        instructionParts.add(buildingString);*/
         String[] instructionParts = out.split(" ");
 
         return instructionFactory.instructionFrom(instructionParts);
